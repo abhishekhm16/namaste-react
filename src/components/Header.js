@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 // import Button from "@mui/material/Button";
 
 const Header = () => {
   const [logbtn, setlogbtn] = useState("login");
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
+  console.log(loggedInUser);
 
   console.log("header rendered");
   useEffect(() => {
@@ -31,6 +34,9 @@ const Header = () => {
           </li>
           <li key="grocery" className="px-4">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li key="user" className="px-4">
+            {loggedInUser}
           </li>
 
           <li key="status" className="px-4">

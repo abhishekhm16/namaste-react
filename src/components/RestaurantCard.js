@@ -1,7 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (prop) => {
-  const { resData } = prop; //2
+  const { resData, propdrill } = prop; //2
 
   const { name, cuisines, cloudinaryImageId, type, avgRating } = resData?.data; //optional chaining for destructuring
   return (
@@ -18,6 +18,7 @@ const RestaurantCard = (prop) => {
         <p variant="body2" color="text.secondary">
           {cuisines.join(" ,")}
         </p>
+        {/* <h6>{propdrill}</h6> */}
       </div>
     </>
   );

@@ -10,6 +10,7 @@ class UserClass extends React.Component {
         name: "dummmy",
         location: "dummy",
         bio: "dummy",
+        img: "https://placehold.co/600x400?text=empty",
       },
     };
     console.log("child constuctor");

@@ -1,7 +1,7 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ItemList from "./ItemList";
+import AccordionItemList from "./AccordionItemList";
 
 // Add the solid (fas) icon library to the Font Awesome library
 library.add(fas);
@@ -28,7 +28,7 @@ function RestaurantCategory({ datas, showItems, setShowIndex }) {
             <FontAwesomeIcon icon="fa-solid fa-caret-down" />
           </span>
         </div>
-        {showItems && <ItemList items={datas?.itemCards} />}
+        {showItems && <AccordionItemList items={datas?.itemCards} />}
       </div>
     </div>
   );

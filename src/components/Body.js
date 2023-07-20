@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 // import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 // import RestList from "../utils/mockData";
 
 const Body = function () {
@@ -12,6 +13,8 @@ const Body = function () {
   const [Searchtext, setSearchtext] = useState("");
   const onlineStatus = useOnlineStatus();
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+  const { loggedInUser, setusername } = useContext(UserContext);
+  // const propname = "yolo";  prop drilling example
   console.log(" body rendered after click", RestroList);
   useEffect(() => {
     // fetch(
@@ -52,7 +55,7 @@ const Body = function () {
     return <h1>Not connected to Internet</h1>;
   }
 
-  return RestroList.length == 0 ? (
+  return RestroList.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -95,6 +98,18 @@ const Body = function () {
             Search
           </button>
         </div>
+
+        <div>
+          <label>userinput:</label>
+          <input
+            onChange={(e) => {
+              setusername(e.target.value);
+            }}
+            value={loggedInUser}
+            type="text"
+            className="placeholder:italic placeholder:text-slate-400 block bg-white  border border-slate-300 rounded-md py-2 pl-3 m-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+          ></input>
+        </div>
       </div>
 
       <div className="flex flex-wrap">
@@ -111,6 +126,7 @@ const Body = function () {
             {resData.data.promoted ? (
               <RestaurantCardPromoted resData={resData} />
             ) : (
+              // <RestaurantCard resData={resData} propdrill={propname} />
               <RestaurantCard resData={resData} />
             )}
           </Link>

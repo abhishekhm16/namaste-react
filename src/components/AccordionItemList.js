@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
-const ItemList = ({ items }) => {
+const AccordionItemList = ({ items }) => {
+  const { loggedInUser } = useContext(UserContext);
   console.log(items);
   return (
     <div>
@@ -12,6 +15,7 @@ const ItemList = ({ items }) => {
           >
             <div className="w-9/12">
               <div className=" py-2">
+                <h1>user:{loggedInUser}</h1>
                 <span>{item.card.info.name}</span>
                 <span>₹ {item.card.info.price / 100}</span>
               </div>
@@ -38,4 +42,4 @@ const ItemList = ({ items }) => {
     </div>
   );
 };
-export default ItemList;
+export default AccordionItemList;
