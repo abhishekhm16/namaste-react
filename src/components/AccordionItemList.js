@@ -1,10 +1,16 @@
 import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext";
+import { useDispatch } from "react-redux";
+import { additem } from "../utils/slices/cartSlice";
 
 const AccordionItemList = ({ items }) => {
   const { loggedInUser } = useContext(UserContext);
   console.log(items);
+  const dispatch = useDispatch();
+  function handleAddItem(item) {
+    dispatch(additem(item));
+  }
   return (
     <div>
       {items.map((item) => {
@@ -25,7 +31,12 @@ const AccordionItemList = ({ items }) => {
 
             <div className="w-3/12 p-4">
               <div className="absolute">
-                <button className="p-1 mx-12  bg-black text-white rounded">
+                <button
+                  className="p-1 mx-12  bg-black text-white rounded"
+                  onClick={() => {
+                    return handleAddItem(item);
+                  }}
+                >
                   Add+
                 </button>
               </div>

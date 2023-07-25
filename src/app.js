@@ -8,8 +8,12 @@ import About from "./components/About";
 import ErrorPage from "./components/ErrorPage";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // import Grocery from "./components/Grocery";
 // const RestaurantCard = ({ resName, cuisine, img }) => {  destructuring on fly to pass prop //1
+
 const Grocery = lazy(() => import("./components/Grocery"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
 
@@ -27,11 +31,13 @@ const AppLayout = () => {
   }, []);
   return (
     <div className="app">
-      <UserContext.Provider value={{ loggedInUser: username, setusername }}>
-        <Header />
-        <Outlet />
-        {/* children routes will be filled from outlet*/}
-      </UserContext.Provider>
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loggedInUser: username, setusername }}>
+          <Header />
+          <Outlet />
+          {/* children routes will be filled from outlet*/}
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -61,6 +67,10 @@ const AppRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/",
