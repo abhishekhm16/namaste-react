@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (prop) => {
   const { resData, propdrill } = prop; //2
 
-  const { name, cuisines, cloudinaryImageId, type, avgRating } = resData?.data; //optional chaining for destructuring
+  const { name, cuisines, cloudinaryImageId, type, avgRating } = resData; //optional chaining for destructuring
   return (
     <>
       <div className="m-4 p-4 w-[250px] h-[300px] bg-slate-50 rounded-lg hover:bg-blue-50">

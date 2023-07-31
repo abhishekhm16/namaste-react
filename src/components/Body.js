@@ -42,8 +42,12 @@ const Body = function () {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    setRestroList(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestroList(json?.data?.cards[2]?.data?.data?.cards);
+    setRestroList(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestroList(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   }
   //using async await latest practise
 
@@ -64,7 +68,7 @@ const Body = function () {
           className=" bg-gray-50 px-4 py-2  m-4"
           onClick={() => {
             const filtered = RestroList.filter(
-              (res) => res?.data?.avgRating > 4.3
+              (res) => res?.info?.avgRating > 4.3
             );
 
             setFilteredRestroList(filtered);
@@ -88,7 +92,7 @@ const Body = function () {
             onClick={() => {
               console.log(Searchtext);
               const searchfilter = RestroList.filter((res) => {
-                return res.data.name
+                return res.info.name
                   .toLowerCase()
                   .includes(Searchtext.toLowerCase());
               });
@@ -122,12 +126,12 @@ const Body = function () {
        /> */}
 
         {filteredRestroList.map((resData) => (
-          <Link key={resData.data.id} to={"/restaurants/" + resData.data.id}>
-            {resData.data.promoted ? (
-              <RestaurantCardPromoted resData={resData} />
+          <Link key={resData.info.id} to={"/restaurants/" + resData.info.id}>
+            {resData?.info.promoted ? (
+              <RestaurantCardPromoted resData={resData?.info} />
             ) : (
               // <RestaurantCard resData={resData} propdrill={propname} />
-              <RestaurantCard resData={resData} />
+              <RestaurantCard resData={resData?.info} />
             )}
           </Link>
         ))}
