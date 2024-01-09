@@ -1,13 +1,14 @@
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (prop) => {
-  const { resData, propdrill } = prop; //2
+  const { resData } = prop; 
+  // const { resData, propdrill } = prop; 2
   console.log(resData);
 
   const { name, cuisines, cloudinaryImageId, type, avgRating } = resData; //optional chaining for destructuring
   return (
     <>
-      <div className="m-4 p-4 w-[250px] h-[300px] bg-slate-50 rounded-lg hover:bg-blue-50">
+      <div data-testid="resCard" className="m-4 p-4 w-[250px] h-[300px] bg-slate-50 rounded-lg hover:bg-blue-50">
         <img
           component="img"
           height="140"
@@ -25,7 +26,7 @@ const RestaurantCard = (prop) => {
   );
 };
 
-//higher order component which takes restrorantcard as input and return an output with promoted restrautrantcard
+//higher order component which takes restaurantcard as input and return an output with promoted restrautrantcard
 
 export const withPromotedLabel = (RestaurantCard) => {
   return (props) => {
