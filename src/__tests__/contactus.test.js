@@ -3,6 +3,22 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 describe("testcases", () => {
+  beforeAll(()=>{
+    console.log("executes before all running test case")
+  });
+
+  beforeEach(()=>{
+    console.log("executes before running each test case")
+  });
+
+  afterAll(()=>{
+    console.log("executes after all running test case")
+  });
+
+  afterEach(()=>{
+    console.log("executes after running each test case")
+  });
+
   test("contact page is rendered properly", () => {
     render(<ContactUs />);
     //querying
