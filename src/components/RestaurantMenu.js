@@ -25,7 +25,9 @@ const RestaurantMenu = () => {
   //   setRestroInfo(json.data);
   // }
   const { restId } = useParams();
-  const RestroInfo = useRestaurantMenu(restId); //custom hook is used
+  // const RestroInfo = useRestaurantMenu(restId); //custom hook is used
+  const { RestroInfo } = useRestaurantMenu(restId);
+  console.log(RestroInfo);
 
   const [showIndex, setShowIndex] = useState(null);
 
@@ -41,7 +43,7 @@ const RestaurantMenu = () => {
   <Shimmer />;
 
   const { name, cuisines, costForTwo, cloudinaryImageId } =
-    RestroInfo?.cards[0]?.card?.card?.info;
+    RestroInfo?.cards[2]?.card?.card?.info;
 
   // const { itemCards } =
   //   RestroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
@@ -49,7 +51,7 @@ const RestaurantMenu = () => {
   // console.log(RestroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
   const categories =
-    RestroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    RestroInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ==
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -68,7 +70,7 @@ const RestaurantMenu = () => {
       </div>
       <h1 className="text-3xl font-bold m-10 p-2">{name}</h1>
       <p className="font-medium m-4 ">
-        Cuisines: {cuisines.join(",")} , Cost:{costForTwo / 100} for two
+        Cuisines: {cuisines.join(",")} , Cost:{costForTwo} 
       </p>
       {/* categories Accordion code */}
 
