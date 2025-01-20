@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { SWIGGY_API } from "../utils/constants";
 // import RestList from "../utils/mockData";
 
 const Body = function () {
@@ -39,7 +40,7 @@ const Body = function () {
 
   async function fetchData() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=14.4534208&lng=75.9129349&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      SWIGGY_API
     );
     const json = await data.json();
     setRestroList(
