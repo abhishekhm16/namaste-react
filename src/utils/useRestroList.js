@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SWIGGY_API } from "../constants";
+import { SWIGGY_API } from "./constants";
 import { useState } from "react";
 
 

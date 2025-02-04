@@ -5,7 +5,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
-import useRestroList from "../utils/slices/useRestroList";
+import useRestroList from "../utils/useRestroList";
 
 // import RestList from "../utils/mockData";
 
