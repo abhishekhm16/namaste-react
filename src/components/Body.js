@@ -1,55 +1,26 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 // import Button from "@mui/material/Button";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
-import { SWIGGY_API } from "../utils/constants";
+import useRestroList from "../utils/slices/useRestroList";
+
 // import RestList from "../utils/mockData";
 
 const Body = function () {
-  const [RestroList, setRestroList] = useState([]);
-  const [filteredRestroList, setFilteredRestroList] = useState([]);
+  // const [RestroList, setRestroList] = useState([]);
+  // const [filteredRestroList, setFilteredRestroList] = useState([]);
   const [Searchtext, setSearchtext] = useState("");
   const onlineStatus = useOnlineStatus();
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
   const { loggedInUser, setusername } = useContext(UserContext);
+  const { RestroList, filteredRestroList } = useRestroList();
   // const propname = "yolo";  prop drilling example
   console.log(" body rendered after click", RestroList);
-  useEffect(() => {
-    // fetch(
-    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING",
-    //   {
-    //     // Defining method type as POST
-    //     method: "GET",
-    //     // Fetch knows, what type of data are we dealing with
-    //     // headers: {
-    //     //   "Content-Type": "application/json",
-    //     // },
-    //     // Data needs to be parsed into JSON
-    //   }
-    // )
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((data) => console.log(data));
-    // using promise chaining
-    fetchData();
-  }, []);
 
-  async function fetchData() {
-    const data = await fetch(
-      SWIGGY_API
-    );
-    const json = await data.json();
-    setRestroList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestroList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  }
+
   //using async await latest practise
 
   // if (RestroList.length === 0) {
