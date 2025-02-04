@@ -8,7 +8,7 @@ const RestaurantCard = (prop) => {
   const { name, cuisines, cloudinaryImageId, type, avgRating } = resData; //optional chaining for destructuring
   return (
     <>
-      <div data-testid="resCard" className="m-4 p-4 w-[250px] h-[300px] bg-slate-50 rounded-lg hover:bg-blue-50">
+      <div data-testid="resCard" className="m-4 p-4 w-[250px] min-h-400px bg-slate-50 rounded-lg hover:bg-blue-50">
         <img
           component="img"
           height="140"

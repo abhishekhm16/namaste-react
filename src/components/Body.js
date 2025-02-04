@@ -35,7 +35,7 @@ const Body = function () {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="flex">
+      <div className="flex flex-wrap md:flex-nowrap">
         <button
           className=" bg-gray-50 px-4 py-2  m-4"
           onClick={() => {
@@ -69,17 +69,17 @@ const Body = function () {
                   .toLowerCase()
                   .includes(Searchtext.toLowerCase());
               });
-              setFilteredRestroList(searchfilter);
-            }}
-          >
-            Search
-          </button>
-        </div>
+                setFilteredRestroList(searchfilter);
+              }}
+              >
+              Search
+              </button>
+            </div>
 
-        <div>
-          <label>userinput:</label>
-          <input
-            onChange={(e) => {
+            <div className="flex justify-center items-center m-4">
+              <label>userinput:</label>
+              <input
+              onChange={(e) => {
               setusername(e.target.value);
             }}
             value={loggedInUser}
@@ -89,21 +89,20 @@ const Body = function () {
         </div>
       </div>
 
-      <div className="flex flex-wrap">
-        {/* <RestaurantCard
+      <div className="flex mx-auto w-3/4 flex-wrap">
+            {/* <RestaurantCard
          resData={RestList[0]} //passing props dynamically 3
          //passing props to a component
          // resName="kfc"
          // cuisine="burger"
          // img="https://b.zmtcdn.com/data/pictures/chains/9/51039/e3e149c669fa5d2e3f57221a2c394697_o2_featured_v2.jpg?output-format=webp"
        /> */}
-
         {filteredRestroList?.map((resData) => (
           <Link key={resData.info.id} to={"/restaurants/" + resData.info.id}>
             {resData?.info.promoted ? (
               <RestaurantCardPromoted resData={resData?.info} />
             ) : (
-              // <RestaurantCard resData={resData} propdrill={propname} />
+                 // <RestaurantCard resData={resData} propdrill={propname} />
               <RestaurantCard resData={resData?.info} />
             )}
           </Link>

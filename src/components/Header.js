@@ -27,12 +27,12 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="header flex justify-between bg-blue-50 shadow-lg mb-2">
+    <div className="header flex flex-wrap md:flex-nowrap justify-between bg-blue-50 shadow-lg mb-2">
       <div className="logo-container">
         <img className="w-24" src={LOGO_URL} />
       </div>
-      <div className="nav-items flex items-center">
-        <ul className="flex p-4 m-4">
+      <div className="nav-items flex-wrap md:flex-nowrap items-center">
+        <ul className="flex flex-wrap md:flex-nowrap p-4 m-4">
           <li key="home" className="px-4">
             <Link to="">Home</Link>
           </li>
