@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 // import ContactUs from "./components/ContactUs";
 import ErrorPage from "./components/ErrorPage";
-import RestaurantMenu from "./components/RestaurantMenu";
+// import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
@@ -16,6 +16,7 @@ import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
+const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
 
 const AppLayout = () => {
   const [username, setusername] = useState();
@@ -78,7 +79,11 @@ const AppRouter = createBrowserRouter([
       },
       {
         path: "/restaurants/:restId", //: for dynamic ID
-        element: <RestaurantMenu />,
+        element: (
+          <Suspense fallback={<h1>loading Menu...</h1>}>
+            <RestaurantMenu />
+          </Suspense>
+        ),
       },
     ],
   },
