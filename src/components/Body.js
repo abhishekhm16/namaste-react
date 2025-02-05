@@ -16,7 +16,7 @@ const Body = function () {
   const onlineStatus = useOnlineStatus();
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
   const { loggedInUser, setusername } = useContext(UserContext);
-  const { RestroList, filteredRestroList } = useRestroList();
+  const { RestroList, filteredRestroList, setFilteredRestroList } = useRestroList();
   // const propname = "yolo";  prop drilling example
   console.log(" body rendered after click", RestroList);
 

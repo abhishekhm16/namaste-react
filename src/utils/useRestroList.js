@@ -36,7 +36,7 @@ const fetchData = async()=>{
   );
 }
 
-return {RestroList,filteredRestroList};
+return {RestroList,filteredRestroList,setFilteredRestroList};
 }
 
 export default useRestroList;
