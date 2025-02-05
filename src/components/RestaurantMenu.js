@@ -82,9 +82,9 @@ const RestaurantMenu = () => {
           <RestaurantCategory
             key={category?.card?.card?.title}
             datas={category?.card?.card}
-            showItems={index == showIndex ? true : false}
+            showItems={showIndex === index}
             setShowIndex={() => {
-              setShowIndex(index);
+              setShowIndex(showIndex === index ? null : index)
             }}
           />
         );
